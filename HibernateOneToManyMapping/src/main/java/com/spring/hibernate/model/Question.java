@@ -1,0 +1,36 @@
+package com.spring.hibernate.model;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Question {
+
+	@Id
+	@Column(name="question_id")
+	private int questionId;
+	private String question;
+	
+	@OneToMany(mappedBy = "question",fetch = FetchType.EAGER,cascade = CascadeType.ALL)//Cascade is used to avoid to perform corresponding operation(i.e, if we perform save/delete/update operation for Question then answer will automatically saved/delete/update, so no need to save the answer to) 
+	private List<Answer> answer;
+}
+
+/*In lazy loading, associated data loads only when we explicitly call getter or size method
+ * (i.e, if we call question then only question will be loaded and answer will not we loaded we have to 
+ * call explicitly).
+
+
+*Eager is a design pattern in which data occurs on the spot
+*(i.e, if we call question then it needs to return data from 'Question' as well as the 'Answer' table).*/

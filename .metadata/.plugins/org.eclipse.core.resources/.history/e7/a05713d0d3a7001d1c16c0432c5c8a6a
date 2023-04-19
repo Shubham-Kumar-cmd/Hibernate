@@ -1,0 +1,46 @@
+package com.hibernate;
+
+import java.util.List;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.hibernate.model.Student;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        Session session=factory.openSession();
+        
+        CriteriaBuilder cb=session.getCriteriaBuilder();
+        CriteriaQuery<Student> cq = cb.createQuery(Student.class);
+        
+        Root<Student> restricationOnQuery = cq.from(Student.class);
+        
+        //cq.select(restricationOnQuery).where(cb.equal(restricationOnQuery.get("id"),378));
+        //cq.select(restricationOnQuery).where(cb.lt(restricationOnQuery.get("id"), 378));//it will fetch all the data from database whose id is less than 378
+        //cq.select(restricationOnQuery).where(cb.gt(restricationOnQuery.get("id"), 378));//it will fetch all the data from database whose id is greater than 378
+        //cq.select(restricationOnQuery).where(cb.between(restricationOnQuery.get("id"), 18, 1245));
+        //cq.select(restricationOnQuery).where(cb.like(restricationOnQuery.get("place"), "%ia%"));//it will fetch all the data from database when getting the india related word in place attribute 
+        
+        //it will fetch all the Items like, java, Spring Boot etc. in course attribute
+        cq.select(restricationOnQuery).where(restricationOnQuery.get("certi.course").in("java", "Spring Boot", "Angular"));
+        
+        
+        System.out.println("======================================================================================");
+        List<Student> stds = session.createQuery(cq).getResultList();
+        stds.forEach(e->System.out.println(e));
+        
+        session.close();
+        factory.close();
+    }
+}

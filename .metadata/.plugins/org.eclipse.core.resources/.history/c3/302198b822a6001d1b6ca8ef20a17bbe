@@ -1,0 +1,53 @@
+package com.hibernate;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+import com.hibernate.model.Certificate;
+import com.hibernate.model.Student;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    @SuppressWarnings({ "deprecation", "rawtypes", "unchecked" })
+	public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        
+        Certificate certi=new Certificate("SE6","2 months");
+        Student student =new Student(1247,"shyam","patna",certi);
+        
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        session.save(student);
+        
+        //HQL syntax
+        //String query="from Student";
+        //String query="from Student where place='Hyderabad'";
+        //String query="from Student where place=:x";
+        String query="from Student as s where s.place=:x and s.name=:n";
+        Query q=session.createQuery(query);
+        
+        q.setParameter("x", "patna");
+        q.setParameter("n", "shyam");
+        
+        List<Student> list=q.list();
+        for (Student student2 : list) {
+			System.out.println(student2.getName());
+		}
+        
+        tx.commit();
+        session.close();
+        factory.close();
+    }
+}

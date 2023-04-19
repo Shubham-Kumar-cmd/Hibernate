@@ -1,0 +1,44 @@
+package com.spring.hibernate.state;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.spring.hibernate.model.Certificate;
+import com.spring.hibernate.model.Student;
+
+public class StateDemo {
+
+	public static void main(String[] args) {
+		SessionFactory factory=new Configuration().configure().buildSessionFactory();
+		
+		//creating Student object
+		Student student=new Student();
+		student.setId(3);
+		student.setName("Himanshu Kumar");
+		student.setPlace("Bihar");
+		student.setCerti(new Certificate("abc","6 months"));
+		//Student : Transient State
+		
+		
+		Session session=factory.openSession();
+		Transaction tx=session.beginTransaction();
+		session.save(student);//save method call 
+		
+		student.setName("John");//updating the name in both database as well as session
+		//Student : Persistent state - session,database (i.e, student data will be associated with both database and session)
+		
+		
+		tx.commit();
+		session.close();
+		student.setName("Sachin");
+		System.out.println(student.getName());
+		//Student : Detached state, bcz of session is closed so no changes in database but reflect on session
+		
+		factory.close();
+		
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.hibernate.caching;
+
+import net.sf.ehcache.hibernate.EhCacheRegionFactory;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        EhCacheRegionFactory cacheRegionFactory=new EhCacheRegionFactory(null);
+    }
+}

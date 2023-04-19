@@ -1,0 +1,40 @@
+package com.hibernate;
+
+import java.util.List;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.hibernate.model.Student;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        Session session=factory.openSession();
+        
+        CriteriaBuilder cb=session.getCriteriaBuilder();
+        CriteriaQuery<Student> cq = cb.createQuery(Student.class);
+        
+        Root<Student> restricationOnQuery = cq.from(Student.class);
+        
+        //cq.select(root).where(cb.lt(root.get("id"), 378));//it will fetch all the data from database whose id is less than 378
+        //cq.select(root).where(cb.gt(root.get("id"), 378));//it will fetch all the data from database whose id is greater than 378
+        cq.select(restricationOnQuery).where(cb.like(restricationOnQuery.get("place"), "%kumar%"));//it will fetch all the data from database when getting the india related word in place attribute 
+        
+        System.out.println("======================================================================================");
+        List<Student> stds = session.createQuery(cq).getResultList();
+        stds.forEach(e->System.out.println(e));
+        
+        session.close();
+        factory.close();
+    }
+}

@@ -1,0 +1,66 @@
+package com.spring.hibernate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.spring.hibernate.model.Emp;
+import com.spring.hibernate.model.Project;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        
+        
+        //creating Objects of Emp and Project
+        Emp e1=new Emp();
+        Emp e2=new Emp();
+        e1.setEmpId(21);
+        e1.setEmpName("RAM");
+        e2.setEmpId(22);
+        e2.setEmpName("SHYAM");
+        
+        Project p1=new Project();
+        Project p2=new Project();
+        p1.setProjectId(1221);
+        p1.setProjectName("Library Management");
+        p2.setProjectId(1222);
+        p2.setProjectName("ChatBot");
+        
+        List<Emp> list1=new ArrayList<Emp>();
+        List<Project> list2=new ArrayList<Project>();
+        list1.add(e1);
+        list1.add(e2);
+        list2.add(p1);
+        list2.add(p2);
+        
+        e1.setProjects(list2);
+        //e2.setProjects(list2);
+        //p1.setEmps(list1);
+        p2.setEmps(list1);
+        
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        session.save(e1);
+        session.save(e2);
+        session.save(p1);
+        session.save(p2);
+        
+        
+        tx.commit();
+        session.close();
+        factory.close();
+    }
+}

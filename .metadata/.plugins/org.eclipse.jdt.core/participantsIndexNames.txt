@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+G:\Hibernate\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2389236961.index
+\NoteTaker\src\main\resources
+G:\Hibernate\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\678608499.index
+\NoteTakerApp\src\main\resources

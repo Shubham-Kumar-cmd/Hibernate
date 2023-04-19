@@ -1,0 +1,86 @@
+Q)What is Hibernate?
+=>Hibernate is a java framework that simplifies the development of java application to interact with the database.
+=>Hibernate is ORM(Object Relational Mapping) tool.
+=>Hibernate is open source,light weight.
+=>Hibernate is a non-invasive(loosely coupled) framework, means it won'that forces the programmers to extend/implement any class/interface.
+=>It is invented by Gavin King in 2001.
+=>Any type of application can builds with Hibernate framework. 
+
+======================================================================
+                Commonly used Hibernate Annotations
+=======================================================================
+@Entity => use to mark any class as Entity
+@Table =>use to change the table details
+@Id => use to mark column as id(Primary key)
+@GeneratedValue => hibenate will automatically generate the values, for that using an internal sequence. Therefore we don't have to set it manually.
+@Column => can be used to specify column mappings. for example, to change the column name in the associated table in database.
+@Transient => This tells the hibernate not to save this field in database.
+@Temporal => @Temporal over a date field tells hibernate, the format in which date needs to be saved.
+@Lob => @Lob tells hibernate that this is a large object , not a simple object.
+@Embeddable => It defines a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the entity.
+@OneToOne
+@OneToMany
+@ManyToMany
+@JoinColumn  
+
+===========================================================================================
+                                 Fetch Data from Database
+============================================================================================
+                   get()                       |                      load()
+1)get method of hibernate session returns null | 1)load method throws ObjectNotFoundException
+if object is not found in cache as well as     | If object is not found in cache as well as 
+on database.                                   | on database but never return null.
+
+2)use get(), if we are not sure that objects   |2)use post(), if we sure that Objects exists.
+exists in database or not. 
+
+3)get() involves database hit if object        | 3)load() can return proxy in place and only 
+doesn't exists in session cache and return     | initialize the object or hit the database 
+a fully initialized object which may involve   | if any method other than getId() is called on 
+several database call.                         | persistent or entity object. This lazy initialization 
+                                               | increases the performance.
+											 
+=================================================================================================
+                                     Fetch Type
+==================================================================================================
+           Lazy                          |                      Eager
+1)In lazy loading, associated data loads |1)Eager is a design pattern in which data 
+only when we explicitly call getter or   | occurs on the spot.
+size method.
+
+==========================================================================================
+                    Hibernate Objects states | Persistent Life cycle
+==========================================================================================
+There are 4 types of states
+1)Transient state
+2)Persistent state
+3)Detached state					
+4)Removed state
+
+
+=============================================================================================
+                              HQL(Hibernate Query Language)	
+=============================================================================================
+=> HQL is used to fetch Complex data from database.
+                          HQL              		|                    SQL
+1) Database independent (like, oracle,mysql,    | 1)Database dependent.  
+postgres etc.)
+2) Easy to learn for programmers			    | 2) Easy to learn for DBA(Database Administrator)
+3) Query is: from Student                       | 3) Query is: select * from Student
+    =>here Student is Entity name               |    =>here Student is Table name
+			  
+
+==========================================================================================
+                               Caching in Hibernate
+==========================================================================================
+1)Caching is a mechanism to enhance the performance of a Application.
+2)Cache is used to reduce the number of database queries.
+3)Two types of Caching in hibernate(i.e, First level Caching, Second Level Caching)
+
+a)First level Caching:
+				i)Session Object
+				ii)by default enabled
+				
+b)Second Level Caching:
+                i)SessionFactory (It is Thread safe)
+                ii)manually enabled				

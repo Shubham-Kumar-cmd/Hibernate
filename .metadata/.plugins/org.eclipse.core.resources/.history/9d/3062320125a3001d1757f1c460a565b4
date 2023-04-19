@@ -1,0 +1,42 @@
+package com.spring.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.spring.hibernate.model.Student;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        //Configuration cfg=new Configuration();
+        //cfg.configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        System.out.println(factory);
+        System.out.println(factory.getCache());
+        System.out.println(factory.isOpen());
+        
+        //creating Student object
+        Student student=new Student();
+        student.setName("Shubham Kumar");
+        student.setCity("Hyderabad");
+        System.out.println(student);
+        
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        session.saveOrUpdate(student);
+        tx.commit();
+        
+        
+        session.close();
+        factory.close();
+    }
+}

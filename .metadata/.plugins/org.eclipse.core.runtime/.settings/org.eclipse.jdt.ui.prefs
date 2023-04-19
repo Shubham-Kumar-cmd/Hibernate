@@ -1,0 +1,10 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.lang.Enum"><rhs name\="jakarta.persistence.TemporalType"/><rhs name\="jakarta.persistence.FetchType"/><rhs name\="jakarta.persistence.CascadeType"/><rhs name\="javax.persistence.GenerationType"/></lhs><lhs name\="java.lang.constant.Constable"><rhs name\="jakarta.persistence.TemporalType"/><rhs name\="jakarta.persistence.FetchType"/><rhs name\="jakarta.persistence.CascadeType"/><rhs name\="javax.persistence.GenerationType"/></lhs><lhs name\="java.io.InputStream"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.Closeable"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.lang.AutoCloseable"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.FileInputStream"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="com.spring.hibernate.model.Student"><rhs name\="com.spring.hibernate.model.Student"/></lhs><lhs name\="com.spring.hibernate.model.Certificate"><rhs name\="com.spring.hibernate.model.Certificate"/></lhs><lhs name\="com.spring.hibernate.model.Question"><rhs name\="com.spring.hibernate.model.Question"/></lhs><lhs name\="com.spring.hibernate.model.Answer"><rhs name\="com.spring.hibernate.model.Answer"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="com.spring.hibernate.model.Project"><rhs name\="com.spring.hibernate.model.Project"/></lhs><lhs name\="com.hibernate.model.Certificate"><rhs name\="com.hibernate.model.Certificate"/></lhs></history>
+content_assist_number_of_computers=15
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.ui.formatterprofiles.version=22
+spelling_locale_initialized=true
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

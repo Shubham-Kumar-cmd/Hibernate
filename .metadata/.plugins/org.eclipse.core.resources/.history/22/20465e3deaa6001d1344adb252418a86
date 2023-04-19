@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+.container{
+	background-color:yellow;
+}
+.cards{
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+ }
+ .card{
+ 	margin:16px 8px;
+ }
+ .title{
+ 	padding-top:20px;
+ 	text-align:center;
+ }
+ 

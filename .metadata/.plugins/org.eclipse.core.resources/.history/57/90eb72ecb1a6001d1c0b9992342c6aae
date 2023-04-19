@@ -1,0 +1,26 @@
+package com.hibernate.caching;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.hibernate.caching.model.Student;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        Session session1=factory.openSession();
+        //First
+        Student std1 = session1.get(Student.class, 15);
+        System.out.println(std1.getId()+" : "+std1.getName()+" : "+std1.getPlace()+" : "+std1.getCerti().getCourse()+" : "+std1.getCerti().getDuration());
+        session1.close();
+        
+        Session session2=factory.openSession();
+        
+        session2.close();
+    }
+}

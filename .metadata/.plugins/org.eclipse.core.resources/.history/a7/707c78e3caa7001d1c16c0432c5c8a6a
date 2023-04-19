@@ -1,0 +1,30 @@
+package com.hibernate;
+
+import java.util.List;
+import java.util.Locale.Category;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.CriteriaQuery;
+
+import com.hibernate.model.Student;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        Session session=factory.openSession();
+        
+        CriteriaQuery<Student> cq = session.getCriteriaBuilder().createQuery(Student.class);
+        //cq.from(Category.class);
+        List<Category> categories = session.createQuery(cq).getResultList();
+        
+        
+        session.close();
+        factory.close();
+    }
+}

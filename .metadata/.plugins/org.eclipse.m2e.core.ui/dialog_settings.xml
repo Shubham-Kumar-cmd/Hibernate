@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="G:\Hibernate"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="internal"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.hibernate"/>
+			<item value="com.hibernate.caching"/>
+			<item value="com.hibernate.pagination"/>
+			<item value="com.hibernate.nativesql"/>
+			<item value="com.hibernate.native.sql"/>
+			<item value="com.hibernate.NoteTaker"/>
+			<item value="com.spring.hibernate"/>
+			<item value="com.spring.hibernate.HibernateWithMaven"/>
+		</list>
+		<list key="groupId">
+			<item value="com.hibernate"/>
+			<item value="com.hibernate.caching"/>
+			<item value="com.hibernate.pagination"/>
+			<item value="com.hibernate.nativesql"/>
+			<item value="com.hibernate.native.sql"/>
+			<item value="com.spring.hibernate"/>
+		</list>
+		<list key="artifactId">
+			<item value="HibernateCriteriaCustomizeQuery"/>
+			<item value="HibernateUsingXml"/>
+			<item value="HibernateUsingXML"/>
+			<item value="NoteTakerApp"/>
+			<item value="HibernateCaching"/>
+			<item value="HibernatePagination"/>
+			<item value="HibernateSQL"/>
+			<item value="HibernateHQL"/>
+			<item value="NoteTaker"/>
+			<item value="HibernateManyToManyMapping"/>
+			<item value="HibernateOneToManyMapping"/>
+			<item value="HibernateMapping"/>
+			<item value="HibernateUsingEmbeddable"/>
+			<item value="HibernateWithMaven"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

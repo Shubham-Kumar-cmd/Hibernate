@@ -1,0 +1,43 @@
+package com.hibernate.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.hibernate.helper.FactoryProvider;
+import com.hibernate.model.Notes;
+
+
+public class DeleteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			response.setContentType("text/html");
+			PrintWriter out= response.getWriter();
+			
+			int noteId=Integer.parseInt(request.getParameter("note_id").trim());
+			
+			SessionFactory factory=FactoryProvider.getFactory();
+			Session session=factory.openSession();
+			
+			Notes notes = session.get(Notes.class, noteId);
+			session.remove(notes);
+			
+			session.close();
+			response.sendRedirect("showAllNotes.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

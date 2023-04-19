@@ -1,0 +1,76 @@
+package com.spring.hibernate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.spring.hibernate.model.Answer;
+import com.spring.hibernate.model.Question;
+
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        
+        //Sending data to the database
+        
+        //creating Question object
+        Question question=new Question();
+        question.setQuestionId(15);
+        question.setQuestion("What is the advantage of java over python?");
+        
+        //creating Answer object
+        Answer a1=new Answer();
+        a1.setAnswerId(40);
+        a1.setAnswer("Java support Oops feature");
+        a1.setQuestion(question);
+        
+        Answer a2=new Answer();
+        a2.setAnswerId(41);
+        a2.setAnswer("java is a platform independent language");
+        a2.setQuestion(question);
+        
+        Answer a3=new Answer();
+        a3.setAnswerId(42);
+        a3.setAnswer("java doesnot support pointer");
+        a3.setQuestion(question);
+
+
+        List<Answer> list=new ArrayList<Answer>();
+        list.add(a1);
+        list.add(a2);
+        list.add(a3);
+        question.setAnswer(list);
+        
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        session.save(question);
+        session.save(a1);
+        session.save(a2);
+        session.save(a3);
+        
+        //fetching data from database
+        Question q= session.get(Question.class,12);
+        System.out.println(q.getQuestion());
+        for(Answer a:q.getAnswer()) {
+        	System.out.println(a.getAnswer());
+        }
+        
+        tx.commit();
+        session.close();
+        factory.close();
+        System.out.println("main method over");
+    }
+}
